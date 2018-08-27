@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Volttron Home</title>
+</head>
+<body>
+    <h2>User: {{ user.username }}</h2>
+    <p>Port for VIP Address: {{ vip_port }}</p>
+    <p>Port for Volttron Central: {{ vc_port }}</p>
+    <p>Port for Jupyter Notebook: {{ jupyter_port }}</p>
+    {% if vc_url %}
+    <p>Volttron Central: <a href="{{ vc_url }}" rel="noopener noreferrer" target="_blank">{{ vc_url }}</a></p>
+    <p>Jupyter Notebook: <a href="{{ jupyter_url }}" rel="noopener noreferrer" target="_blank">{{ jupyter_url }}</a></p>
+      <form method="post">
+    {% csrf_token %}
+    <input type="submit" name="stop-volttron" value="Stop Volttron" ></input>
+  </form>
+    {% else %}
+      <form method="post">
+    {% csrf_token %}
+    <button type="submit">Start Volttron</button>
+  </form>
+    {% endif %}
+</body>
+</html>
+{% endblock %}

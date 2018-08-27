@@ -1,0 +1,4 @@
+volttron-central-address = http://172.31.11.150:8081
+vip-address = tcp://127.0.0.1:22920
+instance-name = "tcp://127.0.0.1:22920"
+bind-web-address = http://172.31.11.150:8081
