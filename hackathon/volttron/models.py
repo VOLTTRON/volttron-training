@@ -57,7 +57,7 @@ class Volttron(models.Model):
         return running_containers.find('hackathon_{}'.format(self.vip_port)) != -1
 
     def start_jupyter_notebook(self):
-        jupyter_cmd = 'cd {} && ./jupyter_notebook.sh hackathon_{} {}'.format(settings.HD_ROOT,
+        jupyter_cmd = 'cd {} && ./jupyter_notebook.sh hackathon_{} {}'.format(settings.TRAINING_ROOT,
                                                                               self.vip_port,
                                                                               self.jupyter_port)
         run_process(jupyter_cmd)
@@ -96,7 +96,7 @@ def _post_save(sender, instance, *args, **kwargs):
     global DOCKER_ERR
     if not Volttron.is_exist(instance.vip_port):
         if psutil.virtual_memory().available / (1024 * 1024) > settings.CONTAINER_MEMORY_LIMIT:
-            vc_cmd = 'cd {0} && ./run_container.sh hackathon_{1} {1} {2}'.format(settings.HD_ROOT,
+            vc_cmd = 'cd {0} && ./run_container.sh hackathon_{1} {1} {2}'.format(settings.TRAINING_ROOT,
                                                                                  instance.vip_port,
                                                                                  instance.vc_port)
             run_process(vc_cmd)

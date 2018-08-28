@@ -76,7 +76,7 @@ WSGI_APPLICATION = 'hackathon.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'hackathon-docker',
+        'NAME': 'volttron-training',
         'USER': 'django',
         'PASSWORD': 'docker*1',
         'HOST': '',
@@ -131,8 +131,8 @@ VIP_PORTS = set(range(22911, 22931))
 VC_PORTS = set(range(8081, 8101))
 JUPYTER_PORTS = set(range(8881, 8901))
 
-# hackathon-docker root directory
-HD_ROOT = os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', '..'))
+# root directory
+TRAINING_ROOT = os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', '..'))
 
 PUBLIC_URL = 'http://hackathon-small.ki-evi.com'
 

@@ -1,4 +1,4 @@
-# volttron-training: Jupyter Notebooks for VOLTTRON
+# Jupyter Notebooks for VOLTTRON
 
 This repository contains source code and tools for setting up one or more
 Docker (https://www.docker.com/) containers on a Linux server, each 
@@ -74,10 +74,18 @@ Install Postgres:
 
     $ sudo apt-get install postgresql postgresql-contrib
 
-Start postgres, create the necessary postgres users and the application's database:
+Start postgres, create a postgres user and create a database:
 
-    $ source install_postgres.sh
-        Enter the new role's password: docker*1
+    $ sudo systemctl start postgresql
+
+Create a postgres user:
+
+    $ sudo su postgres -c 'createuser -d -l -R -S -P django'
+        Enter the new user's password: docker*1
+
+Create a database:
+
+    $ sudo su postgres -c 'createdb -O django volttron-training'
 
 Ensure that local authentication is correct:
 
@@ -88,7 +96,7 @@ Ensure that local authentication is correct:
 Log into psql and set your password:
 
     $ psql -U postgres
-    # ALTER USER postgres with password docker*1;
+    # ALTER USER postgres with password 'docker*1';
     # \q
 
     Open the file /etc/postgresql/9.5/main/pg_hba.conf and change 'trust' to 'md5'
@@ -138,7 +146,7 @@ running container after the source code has been updated with a ```git pull```.
 In a web browser, navigate to a URL containing the PUBLIC_URL that was set above
 in settings.py, along with the port number (8000) and app name (volttron):
 
-    hackathon.ki-evi.com:8000/volttron
+    http://hackathon.ki-evi.com:8000/volttron
 
 ## Sign Up for a New Account
 
