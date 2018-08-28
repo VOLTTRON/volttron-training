@@ -113,7 +113,7 @@ Restart the postgresql server:
     $ python hackathon/manage.py createsuperuser
         # create superuser 'admin' with password 'port-1220'
 
-Edit the Django settings file, settings.py, as follows:
+Edit the Django settings file, hackathon/hackathon/settings.py, as follows:
 
     Change PUBLIC_URL to be the server’s DNS name
     (hackathon.ki-evi.com in this example).
