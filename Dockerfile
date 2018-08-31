@@ -18,6 +18,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     python-pip \
     git \
     gnupg \
+    sqlite3 \
+    libsqlite3-dev \
     dirmngr \
     && pip install PyYAML \
     && rm -rf /var/lib/apt/lists/*
