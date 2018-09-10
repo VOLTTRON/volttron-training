@@ -113,7 +113,7 @@ Restart the postgresql server:
     $ python hackathon/manage.py createsuperuser
         # create superuser 'admin' with password 'port-1220'
 
-Edit the Django settings file, hackathon/hackathon/settings.py, as follows:
+Edit the Django local settings file, hackathon/hackathon/settings/local.py, as follows:
 
     Change PUBLIC_URL to be the server’s DNS name
     (hackathon.ki-evi.com in this example).
@@ -126,6 +126,10 @@ Edit the Django settings file, hackathon/hackathon/settings.py, as follows:
         large   = 8000  MB (15 containers)
         xlarge  = 16000 MB (31 containers)
         2xlarge = 32000 MB (63 containers)
+
+    Ignore editing:
+    $ cd ~/volttron-training
+    $ git update-index --assume-unchanged "hackathon/hackathon/settings/local.py"
 
 # Step 2 (Administrator): Start the Django Server
 
