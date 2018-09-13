@@ -78,8 +78,9 @@ RUN chmod +x start_jupyter.sh
 RUN chmod +x -R volttron
 RUN chmod +x -R .jupyter
 
-# For the notebooks, give the volttron group write permission for a file that can get overwritten.
+# Give the volttron group write permission on some files that can get overwritten by notebooks.
 RUN chmod 664 ${VOLTTRON_ROOT}/applications/kisensum/Simulation/SimulationAgent/simulation/custom_setpoint.py
+RUN chmod 664 ${VOLTTRON_ROOT}/applications/kisensum/Simulation/SimulationAgent/simulation/meter_target.py
 
 USER root
 EXPOSE 22916
