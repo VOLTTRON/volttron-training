@@ -132,18 +132,10 @@ VC_PORTS = set(range(8081, 8101))
 JUPYTER_PORTS = set(range(8881, 8901))
 
 # root directory
-TRAINING_ROOT = os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', '..'))
-
-PUBLIC_URL = 'http://hackathon-small.ki-evi.com'
-
-# total physical memory
-HOST_MEMORY = 2000
+TRAINING_ROOT = os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', '..', '..'))
 
 # total memory of other process
 OTHER_MEMORY = 400
 
 # maximum memory allocated for each container
 CONTAINER_MEMORY_LIMIT = 512
-
-# total number of conatainers allowed
-TOTAL_CONTAINERS = (HOST_MEMORY - OTHER_MEMORY) / CONTAINER_MEMORY_LIMIT
