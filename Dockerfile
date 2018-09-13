@@ -82,6 +82,11 @@ RUN chmod +x -R .jupyter
 RUN chmod 664 ${VOLTTRON_ROOT}/applications/kisensum/Simulation/SimulationAgent/simulation/custom_setpoint.py
 RUN chmod 664 ${VOLTTRON_ROOT}/applications/kisensum/Simulation/SimulationAgent/simulation/meter_target.py
 
+# Allow notebooks files to be updated by containers
+RUN chmod 664 ${VOLTTRON_ROOT}/examples/JupyterNotebooks/*
+# Allow notebook checkpoint files to be written by containers
+RUN chmod 774 ${VOLTTRON_ROOT}/examples/JupyterNotebooks
+
 USER root
 EXPOSE 22916
 
