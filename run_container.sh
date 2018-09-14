@@ -9,8 +9,8 @@ LOCAL_IP=$(getent hosts $(hostname) | awk '{print $1}')
 
 cat > $PWD/config << EOF
 volttron-central-address = http://$LOCAL_IP:$VC_PORT
-vip-address = tcp://127.0.0.1:$PORT
-instance-name = "tcp://127.0.0.1:$PORT"
+vip-address = tcp://$LOCAL_IP:$PORT
+instance-name = "tcp://$LOCAL_IP:$PORT"
 bind-web-address = http://$LOCAL_IP:$VC_PORT
 EOF
 
