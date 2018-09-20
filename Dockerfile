@@ -2,8 +2,8 @@ FROM debian:jessie
 
 SHELL [ "bash", "-c" ]
 
-ENV VOLTTRON_GIT_BRANCH=rob/hackathon
-ENV VOLTTRON_APPLICATIONS_GIT_BRANCH=bugfix/simulationdriver
+ENV VOLTTRON_GIT_BRANCH=feature/notebook_improvements
+ENV VOLTTRON_APPLICATIONS_GIT_BRANCH=feature/simulation_fixes
 ENV VOLTTRON_USER_HOME=/home/volttron
 #ENV VOLTTRON_HOME=${VOLTTRON_USER_HOME}/.volttron
 ENV VOLTTRON_ROOT=/code/volttron
@@ -24,8 +24,14 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && pip install PyYAML \
     && rm -rf /var/lib/apt/lists/*
 
-RUN python -m pip install --upgrade pip \
-    && pip install jupyter==1.0.0
+# Install additional libraries that are used by Jupyter notebooks and VOLTTRON agents
+RUN python -m pip install --upgrade pip
+RUN pip install jupyter==1.0.0 \
+    && pip install matplotlib==2.2.3 \
+    && pip install numpy==1.15.0 \
+    && pip install isodate==0.6.0 \
+    && pip install SQLAlchemy==1.1.4 \
+    && pip install signxml==2.4
 
 # add gosu for easy step-down from root
 ENV GOSU_VERSION 1.7
